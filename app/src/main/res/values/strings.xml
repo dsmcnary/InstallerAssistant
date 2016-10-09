@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">InstallerAssistant</string>
+    <string name="hello">Hello World</string>
+    <string name="tower_button_label">Tower Locations</string>
+    <string name="config_button_label">Configure Radio</string>
+    <string name="configfile_button_label">Upload Configuration</string>
+    <string name="align_button_label">Align Antenna</string>
+    <string name="billing_button_label">Setup Account</string>
 </resources>
