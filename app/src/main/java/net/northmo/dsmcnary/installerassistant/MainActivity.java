@@ -1,6 +1,7 @@
 package net.northmo.dsmcnary.installerassistant;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -44,7 +45,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intentAlign);
                 break;
             case R.id.billing_button:
-                Intent intentBilling = new Intent(this, BillingActivity.class);
+                //Uri gmmIntentUri = Uri.parse("geo:37.7749,-122.4194");
+                //Intent intentBilling = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                Intent intentBilling = new Intent(this, MapsActivity.class);
                 startActivity(intentBilling);
                 break;
         }
