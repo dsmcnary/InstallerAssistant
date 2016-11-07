@@ -23,34 +23,19 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-/**
- * Location sample.
- *
- * Demonstrates use of the Location API to retrieve the last known location for a device.
- * This sample uses Google Play services (GoogleApiClient) but does not need to authenticate a user.
- * See https://github.com/googlesamples/android-google-accounts/tree/master/QuickStart if you are
- * also using APIs that need authentication.
- */
-// extends AppCompatActivity
-
 public class TowerActivity extends AppCompatActivity implements
         ConnectionCallbacks, OnConnectionFailedListener{
 
     protected static final String TAG = "TowerActivity";
 
-    /**
-     * Provides the entry point to Google Play services.
-     */
     protected GoogleApiClient mGoogleApiClient;
 
-    /**
-     * Represents a geographical location.
-     */
     protected Location mLastLocation;
     protected String mLatitudeLabel;
     protected String mLongitudeLabel;
     protected TextView mLatitudeText;
     protected TextView mLongitudeText;
+    public  boolean ASSERT = true; // Assertions turned on if TRUE
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,9 +50,6 @@ public class TowerActivity extends AppCompatActivity implements
         buildGoogleApiClient();
     }
 
-    /**
-     * Builds a GoogleApiClient. Uses the addApi() method to request the LocationServices API.
-     */
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -75,7 +57,6 @@ public class TowerActivity extends AppCompatActivity implements
                 .addApi(LocationServices.API)
                 .build();
     }
-
 
     @Override
     protected void onStart() {
@@ -91,24 +72,26 @@ public class TowerActivity extends AppCompatActivity implements
         }
     }
 
-    /**
-     * Runs when a GoogleApiClient object successfully connects.
-     */
     @Override
     public void onConnected(Bundle connectionHint) {
-        // Provides a simple way of getting a device's location and is well suited for
-        // applications that do not require a fine-grained location and that do not need location
-        // updates. Gets the best and most recent location currently available, which may be null
-        // in rare cases when a location is not available.
-        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        if (mLastLocation != null) {
-            mLatitudeText.setText(String.format("%s: %f", mLatitudeLabel,
-                    mLastLocation.getLatitude()));
-            mLongitudeText.setText(String.format("%s: %f", mLongitudeLabel,
-                    mLastLocation.getLongitude()));
-        } else {
-            Toast.makeText(this, R.string.no_location_detected, Toast.LENGTH_LONG).show();
+        try {
+            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         }
+        catch (SecurityException se){
+            Log.i(TAG, "TowerActivity.java: Security Exception from trying to getLastLocation()");
+            this.finishAffinity();
+        }
+
+        if (ASSERT)
+            assert mLastLocation != null;
+
+        mLatitudeText.setText(String.format("%s: %f", mLatitudeLabel,
+                mLastLocation.getLatitude()));
+        mLongitudeText.setText(String.format("%s: %f", mLongitudeLabel,
+                mLastLocation.getLongitude()));
+
+        //    Toast.makeText(this, R.string.no_location_detected, Toast.LENGTH_LONG).show();
+
     }
 
     @Override
@@ -126,38 +109,3 @@ public class TowerActivity extends AppCompatActivity implements
         mGoogleApiClient.connect();
     }
 }
-
-/*
-import android.os.Bundle;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
-import com.google.android.gms.drive.*;
-import android.support.v4.app.FragmentActivity;
-
-public class TowerActivity extends FragmentActivity implements OnConnectionFailedListener {
-    private GoogleApiClient mGoogleApiClient;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        // Create a GoogleApiClient instance
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this, this)
-                .addApi(Drive.API)
-                .addScope(Drive.SCOPE_FILE)
-                .build();
-
-        // ...
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult result) {
-        // An unresolvable error has occurred and a connection to Google APIs
-        // could not be established. Display an error message, or handle
-        // the failure silently
-
-        // ...
-    }
-}*/

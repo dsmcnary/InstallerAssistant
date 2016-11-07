@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    protected static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intentBilling = new Intent(this, MapsActivity.class);
                 startActivity(intentBilling);
                 break;
+            default:
+                Log.i(TAG, "TowerActivity.java: Security Exception from trying to getLastLocation()");
+                throw new RuntimeException();
+
         }
     }
 }
