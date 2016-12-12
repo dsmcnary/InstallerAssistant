@@ -1,18 +1,28 @@
 <resources>
     <string name="app_name">InstallerAssistant</string>
-    <string name="hello">Hello World</string>
     <string name="tower_button_label">Tower Locations</string>
     <string name="config_button_label">Configure Radio</string>
     <string name="configfile_button_label">Upload Configuration</string>
     <string name="align_button_label">Align Antenna</string>
     <string name="billing_button_label">Setup Account</string>
 
-    <string name="latitude_label">Latitude</string>
-    <string name="longitude_label">Longitude</string>
-
-    <string name="no_location_detected">
-        No location detected. Make sure location is enabled on the device.
-    </string>
     <string name="title_activity_maps">Map</string>
+
+
+    <string name="Add_New">Add New</string>
+    <string name="edit">Edit Contact</string>
+    <string name="delete">Delete Contact</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email</string>
+    <string name="street">Street</string>
+    <string name="country">City/State/Zip</string>
+    <string name="save">Save Contact</string>
+    <string name="deleteContact">Are you sure, you want to delete it?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="needproc">Needs Processed: </string>
+    <string name="company">Internet Associates</string>
 
 </resources>

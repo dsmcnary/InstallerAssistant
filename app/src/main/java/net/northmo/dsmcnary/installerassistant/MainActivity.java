@@ -1,6 +1,9 @@
 package net.northmo.dsmcnary.installerassistant;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,13 +28,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         alignButton.setOnClickListener(this);
         View billingButton = findViewById(R.id.billing_button);
         billingButton.setOnClickListener(this);
+
+        FragmentManager fm = getSupportFragmentManager();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tower_button:
-                Intent intentTower = new Intent(this, TowerActivity.class);
+                //Intent intentTower = new Intent(this, TowerActivity.class);
+                //startActivity(intentTower);
+                Uri gmmIntentUri = Uri.parse("geo:39.748877, -94.247276");
+                Intent intentTower = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 startActivity(intentTower);
                 break;
             case R.id.config_button:
@@ -47,9 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intentAlign);
                 break;
             case R.id.billing_button:
-                //Uri gmmIntentUri = Uri.parse("geo:37.7749,-122.4194");
-                //Intent intentBilling = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                Intent intentBilling = new Intent(this, MapsActivity.class);
+                Intent intentBilling = new Intent(this, BillingActivity.class);
                 startActivity(intentBilling);
                 break;
             default:

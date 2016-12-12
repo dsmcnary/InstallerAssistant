@@ -6,4 +6,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="net.northmo.dsmcnary.installerassistant.MapsActivity"
-    class="com.google.android.gms.maps.SupportMapFragment" />
+    tools:layout="@layout/activity_maps"/>

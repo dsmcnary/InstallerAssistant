@@ -1,4 +1,4 @@
-package net.northmo.dsmcnary.installerassistant;
+/*package net.northmo.dsmcnary.installerassistant;
 
 import org.junit.Test;
 import net.northmo.dsmcnary.installerassistant.DBHandler;
@@ -16,4 +16,4 @@ public class addNewTowerTest
         DBHandler::addTower;(t);
         assertEquals(pre1 + 1, DBHandler::getTowerCount());
     }
-}
+}*/

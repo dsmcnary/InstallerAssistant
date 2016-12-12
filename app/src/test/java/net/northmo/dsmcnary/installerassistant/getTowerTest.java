@@ -1,10 +1,10 @@
-package net.northmo.dsmcnary.installerassistant;
+/*package net.northmo.dsmcnary.installerassistant;
 
 import org.junit.Test;
 
 /**
  * Created by Daniel McNary on 11/27/2016.
- */
+
 
 public class getTowerTest {
 
@@ -14,4 +14,4 @@ public class getTowerTest {
         tower t;
         assertNotEquals(t, DBHandler::getTower(1));
     }
-}
+}*/
