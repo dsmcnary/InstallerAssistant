@@ -1,6 +1,5 @@
 package net.northmo.dsmcnary.installerassistant;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,25 +13,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.app.AlertDialog;
-
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.database.Cursor;
-
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
 public class DisplayContact extends AppCompatActivity {
     int from_Where_I_Am_Coming = 0;
-    private DBHelper mydb ;
+    private DBCustomerInfoHelper mydb ;
 
     TextView name ;
     TextView phone;
@@ -51,7 +34,7 @@ public class DisplayContact extends AppCompatActivity {
         street = (TextView) findViewById(R.id.editTextEmail);
         place = (TextView) findViewById(R.id.editTextCity);
 
-        mydb = new DBHelper(this);
+        mydb = new DBCustomerInfoHelper(this);
 
         Bundle extras = getIntent().getExtras();
         if(extras !=null) {
@@ -63,11 +46,11 @@ public class DisplayContact extends AppCompatActivity {
                 id_To_Update = Value;
                 rs.moveToFirst();
 
-                String nam = rs.getString(rs.getColumnIndex(DBHelper.CONTACTS_COLUMN_NAME));
-                String phon = rs.getString(rs.getColumnIndex(DBHelper.CONTACTS_COLUMN_PHONE));
-                String emai = rs.getString(rs.getColumnIndex(DBHelper.CONTACTS_COLUMN_EMAIL));
-                String stree = rs.getString(rs.getColumnIndex(DBHelper.CONTACTS_COLUMN_STREET));
-                String plac = rs.getString(rs.getColumnIndex(DBHelper.CONTACTS_COLUMN_CITY));
+                String nam = rs.getString(rs.getColumnIndex(DBCustomerInfoHelper.CONTACTS_COLUMN_NAME));
+                String phon = rs.getString(rs.getColumnIndex(DBCustomerInfoHelper.CONTACTS_COLUMN_PHONE));
+                String emai = rs.getString(rs.getColumnIndex(DBCustomerInfoHelper.CONTACTS_COLUMN_EMAIL));
+                String stree = rs.getString(rs.getColumnIndex(DBCustomerInfoHelper.CONTACTS_COLUMN_STREET));
+                String plac = rs.getString(rs.getColumnIndex(DBCustomerInfoHelper.CONTACTS_COLUMN_CITY));
 
                 if (!rs.isClosed())  {
                     rs.close();

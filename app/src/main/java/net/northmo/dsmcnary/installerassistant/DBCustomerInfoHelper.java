@@ -10,7 +10,7 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase;
 
-public class DBHelper extends SQLiteOpenHelper {
+public class DBCustomerInfoHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "MyDBName.db";
     public static final String CONTACTS_TABLE_NAME = "contacts";
@@ -20,9 +20,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CONTACTS_COLUMN_STREET = "street";
     public static final String CONTACTS_COLUMN_CITY = "place";
     public static final String CONTACTS_COLUMN_PHONE = "phone";
-    private HashMap hp;
 
-    public DBHelper(Context context) {
+    public DBCustomerInfoHelper(Context context) {
         super(context, DATABASE_NAME , null, 1);
     }
 
@@ -88,7 +87,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public ArrayList<String> getAllCotacts() {
         ArrayList<String> array_list = new ArrayList<String>();
 
-        //hp = new HashMap();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res =  db.rawQuery( "select * from contacts", null );
         res.moveToFirst();

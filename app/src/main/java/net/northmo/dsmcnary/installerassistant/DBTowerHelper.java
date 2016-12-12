@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DBHandler extends SQLiteOpenHelper {
+public class DBTowerHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "northmo";
     private static final String TABLE_TOWER = "tower";
@@ -13,7 +13,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEY_NAME = "name";
     private static final String KEY_LOC = "location";
 
-    public DBHandler(Context context)
+    public DBTowerHelper(Context context)
     {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }

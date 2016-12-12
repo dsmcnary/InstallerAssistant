@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tower_button:
-                //Intent intentTower = new Intent(this, TowerActivity.class);
+                //Intent intentTower = new Intent(this, TowerMapActivity.class);
                 //startActivity(intentTower);
                 Uri gmmIntentUri = Uri.parse("geo:39.748877, -94.247276");
                 Intent intentTower = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intentBilling);
                 break;
             default:
-                Log.i(TAG, "TowerActivity.java: Security Exception from trying to getLastLocation()");
+                Log.i(TAG, "TowerMapActivity.java: Security Exception from trying to getLastLocation()");
                 throw new RuntimeException();
 
         }

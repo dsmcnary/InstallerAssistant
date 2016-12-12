@@ -1,7 +1,6 @@
 package net.northmo.dsmcnary.installerassistant;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 public class BillingActivity extends AppCompatActivity {
     public final static String EXTRA_MESSAGE = "MESSAGE";
     private ListView obj;
-    DBHelper mydb;
+    DBCustomerInfoHelper mydb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -25,7 +24,7 @@ public class BillingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_billing);
 
-        mydb = new DBHelper(this);
+        mydb = new DBCustomerInfoHelper(this);
         ArrayList array_list = mydb.getAllCotacts();
         ArrayAdapter arrayAdapter=new ArrayAdapter(this,android.R.layout.simple_list_item_1, array_list);
 
@@ -50,7 +49,6 @@ public class BillingActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
